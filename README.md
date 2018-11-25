@@ -1,11 +1,12 @@
 # Bank Notifications to YNAB.
+[![CircleCI](https://circleci.com/gh/abuiles/banknot_to_ynab.svg?style=svg)](https://circleci.com/gh/abuiles/banknot_to_ynab)
 
 Parses notifications from banks in Colombia to [YNAB](https://www.youneedabudget.com/) transactions.
 
 Supported banks:
 
 | Davivienda  | ✅ |
-| Bancolombia |❌|
+| Bancolombia |❌  |
 
 ## Installation
 
