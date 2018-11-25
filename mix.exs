@@ -10,7 +10,9 @@ defmodule BanknotToYnab.MixProject do
       version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: description(),
+      package: package()
     ]
   end
 
