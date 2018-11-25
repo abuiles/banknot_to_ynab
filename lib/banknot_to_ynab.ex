@@ -23,7 +23,7 @@ defmodule BanknotToYnab do
     date_regex = ~r/Fecha: (?<date>[\d|\/]+)/
     amount_regex = ~r/Valor Transacción: (?<amount>[\d|,]+)/
     payee_regex = ~r/Lugar de Transacción: (?<payee_name>.+)\n/
-    import_id = :crypto.hash(:md5, notification) |> Base.encode16
+    import_id = :crypto.hash(:md5, notification) |> Base.encode16()
 
     %{"date" => date} = Regex.named_captures(date_regex, notification)
     %{"amount" => amount} = Regex.named_captures(amount_regex, notification)

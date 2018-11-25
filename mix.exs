@@ -30,7 +30,7 @@ defmodule BanknotToYnab.MixProject do
     "Parse notifications from banks outside of America to YNAB transactions."
   end
 
-   defp package() do
+  defp package() do
     [
       maintainers: ["Adolfo Builes"],
       licenses: ["MIT"],
