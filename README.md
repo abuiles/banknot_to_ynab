@@ -5,8 +5,10 @@ Parses notifications from banks in Colombia to [YNAB](https://www.youneedabudget
 
 Supported banks:
 
-| Davivienda  | ✅ |
-| Bancolombia |❌  |
+| Bank        | Supported |
+|-------------|-----------|
+| Davivienda  | ✅|
+| Bancolombia |❌ |
 
 ## Installation
 
