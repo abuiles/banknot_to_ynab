@@ -10,7 +10,13 @@ defmodule BanknotToYnab.MixProject do
       version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: "Parse notifications from banks outside of America to YNAB transactions.",
+      maintainers: ["Adolfo Builes"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @project_url
+      }
     ]
   end
 
@@ -24,19 +30,5 @@ defmodule BanknotToYnab.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     []
-  end
-
-  defp description() do
-    "Parse notifications from banks outside of America to YNAB transactions."
-  end
-
-  defp package() do
-    [
-      maintainers: ["Adolfo Builes"],
-      licenses: ["MIT"],
-      links: %{
-        "GitHub" => @project_url
-      }
-    ]
   end
 end
