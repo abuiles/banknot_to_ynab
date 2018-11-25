@@ -3,7 +3,7 @@ defmodule BanknotToYnab do
   Defines the main functions to parse notifications.
   """
 
-  @doc ~S"""
+  @doc """
   Parse notifications from any of the supported banks to a YNAB
   transaction.
 
