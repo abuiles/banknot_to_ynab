@@ -12,7 +12,11 @@ defmodule BanknotToYnab.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: description(),
-      package: package()
+      package: package(),
+      docs: [
+        main: "readme",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -25,7 +29,9 @@ defmodule BanknotToYnab.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    []
+    [
+      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+    ]
   end
 
   defp description() do
