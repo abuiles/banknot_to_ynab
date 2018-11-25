@@ -1,6 +1,6 @@
 defmodule BanknotToYnab do
   @moduledoc """
-  Documentation for BanknotToYnab.
+  Defines the main functions to parse notifications.
   """
 
   @doc ~S"""
