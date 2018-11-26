@@ -8,7 +8,7 @@ defmodule BanknotToYnab.MixProject do
     [
       app: :banknot_to_ynab,
       version: @version,
-      elixir: "~> 1.6",
+      elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: description(),
@@ -30,7 +30,7 @@ defmodule BanknotToYnab.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 
