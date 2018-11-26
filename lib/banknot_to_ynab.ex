@@ -8,7 +8,34 @@ defmodule BanknotToYnab do
   transaction.
 
   ## Examples
-  iex> notification = "Apreciado(a) X:\n\nLe  informamos que se ha registrado el siguiente movimiento de su Tarjeta Crédito terminada en ****2020:\n\nFecha: 2018/11/23\nHora: 15:33:30\nValor Transacción: 18,000\nClase de Movimiento: Compra\nRespuesta: Aprobado(a)\nLugar de Transacción: CAFE SAN ALBERTO MUSEO\n\nBANCO DAVIVIENDA\nAVISO LEGAL : Este mensaje es confidencial, puede contener\ninformación privilegiada y no puede ser usado ni divulgado por\npersonas distintas de su destinatario. Si obtiene esta transmisión\npor error, por favor destruya su contenido y avise a su remitente.\nesta prohibida su retención, grabación, utilización, aprovechamiento\no divulgación con cualquier propósito. Este mensaje ha sido sometido\na programas antivirus. No obstante, el BANCO DAVIVIENDA S.A. y sus FILIALES   no\nasumen ninguna responsabilidad por eventuales daños generados por\nel recibo y el uso de este material, siendo responsabilidad del destinatario\nverificar con sus propios medios la existencia de virus u otros\ndefectos. El presente correo electrónico solo refleja la opinión de\nsu Remitente y no representa necesariamente la opinión oficial del\nBANCO DAVIVIENDA S.A. y sus FILIALES  o de sus Directivos\n"
+
+  iex> notification = \"""
+  ...>Apreciado(a) X:
+  ...>
+  ...>Le  informamos que se ha registrado el siguiente movimiento de su Tarjeta Crédito terminada en ****2020:
+  ...>
+  ...>Fecha: 2018/11/23
+  ...>Hora: 15:33:30
+  ...>Valor Transacción: 18,000
+  ...>Clase de Movimiento: Compra
+  ...>Respuesta: Aprobado(a)
+  ...>Lugar de Transacción: CAFE SAN ALBERTO MUSEO
+  ...>
+  ...>BANCO DAVIVIENDA
+  ...>AVISO LEGAL : Este mensaje es confidencial, puede contener
+  ...>información privilegiada y no puede ser usado ni divulgado por
+  ...>personas distintas de su destinatario. Si obtiene esta transmisión
+  ...>por error, por favor destruya su contenido y avise a su remitente.
+  ...>esta prohibida su retención, grabación, utilización, aprovechamiento
+  ...>o divulgación con cualquier propósito. Este mensaje ha sido sometido
+  ...>a programas antivirus. No obstante, el BANCO DAVIVIENDA S.A. y sus FILIALES   no
+  ...>asumen ninguna responsabilidad por eventuales daños generados por
+  ...>el recibo y el uso de este material, siendo responsabilidad del destinatario
+  ...>verificar con sus propios medios la existencia de virus u otros
+  ...>defectos. El presente correo electrónico solo refleja la opinión de
+  ...>su Remitente y no representa necesariamente la opinión oficial del
+  ...>BANCO DAVIVIENDA S.A. y sus FILIALES  o de sus Directivos
+  ...>\"""
   iex> BanknotToYnab.parse(notification)
   %{
     amount: "18,000",
