@@ -38,10 +38,10 @@ defmodule BanknotToYnab do
       ...>\"""
       iex> BanknotToYnab.parse(notification)
       %{
-        amount: "18,000",
+        amount: -18000,
         approved: true,
         cleared: "cleared",
-        date: "2018/11/23",
+        date: "2018-11-23",
         import_id: "2500C49ECA637B543FFFA1AEE5A3C133",
         payee_name: "CAFE SAN ALBERTO MUSEO"
       }
@@ -56,11 +56,13 @@ defmodule BanknotToYnab do
     %{"amount" => amount} = Regex.named_captures(amount_regex, notification)
     %{"payee_name" => payee_name} = Regex.named_captures(payee_regex, notification)
 
+    {amount, _} = amount |> String.replace(",", "") |> Integer.parse()
+
     %{
-      amount: amount,
+      amount: -amount,
       approved: true,
       cleared: "cleared",
-      date: date,
+      date: date |> String.replace("/", "-"),
       import_id: import_id,
       payee_name: payee_name
     }
