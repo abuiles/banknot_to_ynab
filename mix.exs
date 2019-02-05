@@ -2,7 +2,7 @@ defmodule BanknotToYnab.MixProject do
   use Mix.Project
 
   @project_url "https://github.com/abuiles/banknot_to_ynab"
-  @version "0.3.0"
+  @version "0.4.0"
 
   def project do
     [
