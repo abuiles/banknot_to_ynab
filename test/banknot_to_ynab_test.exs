@@ -1,5 +1,5 @@
 defmodule BanknotToYnabTest do
-  doctest BanknotToYnab
+  use ExUnit.Case
 
   describe "Colombia banks" do
     @davivienda """
@@ -39,6 +39,37 @@ defmodule BanknotToYnabTest do
                 date: "2018-11-23",
                 import_id: "816E67F5B544F6B490687F939BA6B98D",
                 payee_name: "CAFE SAN ALBERTO MUSEO"
+              }} = BanknotToYnab.parse(@davivienda)
+    end
+  end
+
+  describe "Panama banks" do
+    @davivienda """
+    Estimado Cliente
+
+
+    Se ha realizado un cargo a su tarjeta MasterCard Davivienda 9020, por
+    valor de 103.21 en SPORTS BASEMENT el día 04/02/2019
+
+    De no reconocer la transacción, favor llamar al 800 6565 o 216 9214 en
+    Panamá, 018000 118 110 en Colombia o (507) 216 9214 en el resto del
+    mundo.
+
+
+    Cordialmente
+
+    Banco Davivienda Panamá S.A.
+    """
+
+    test "it recognizes davivienda panama" do
+      assert {:ok,
+              %{
+                amount: -103.21,
+                approved: true,
+                cleared: "cleared",
+                date: "04-02-2019",
+                import_id: "ACFBBCE45FBD20BB26905DDE53393BD5",
+                payee_name: "SPORTS BASEMENT"
               }} = BanknotToYnab.parse(@davivienda)
     end
   end
