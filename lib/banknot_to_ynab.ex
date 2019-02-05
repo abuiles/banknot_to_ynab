@@ -37,14 +37,14 @@ defmodule BanknotToYnab do
       ...>BANCO DAVIVIENDA S.A. y sus FILIALES  o de sus Directivos
       ...>\"""
       iex> BanknotToYnab.parse(notification)
-      %{
+      {:ok, %{
         amount: "18,000",
         approved: true,
         cleared: "cleared",
         date: "2018/11/23",
         import_id: "2500C49ECA637B543FFFA1AEE5A3C133",
         payee_name: "CAFE SAN ALBERTO MUSEO"
-      }
+        }}
   """
   def parse(notification) do
     date_regex = ~r/Fecha: (?<date>[\d|\/]+)/
@@ -56,13 +56,14 @@ defmodule BanknotToYnab do
     %{"amount" => amount} = Regex.named_captures(amount_regex, notification)
     %{"payee_name" => payee_name} = Regex.named_captures(payee_regex, notification)
 
-    %{
-      amount: amount,
-      approved: true,
-      cleared: "cleared",
-      date: date,
-      import_id: import_id,
-      payee_name: payee_name
-    }
+    {:ok,
+     %{
+       amount: amount,
+       approved: true,
+       cleared: "cleared",
+       date: date,
+       import_id: import_id,
+       payee_name: payee_name
+     }}
   end
 end
