@@ -37,34 +37,39 @@ defmodule BanknotToYnab do
       ...>BANCO DAVIVIENDA S.A. y sus FILIALES  o de sus Directivos
       ...>\"""
       iex> BanknotToYnab.parse(notification)
-      %{
+      {:ok, %{
         amount: -18000,
         approved: true,
         cleared: "cleared",
         date: "2018-11-23",
         import_id: "2500C49ECA637B543FFFA1AEE5A3C133",
         payee_name: "CAFE SAN ALBERTO MUSEO"
-      }
+      }}
   """
   def parse(notification) do
-    date_regex = ~r/Fecha: (?<date>[\d|\/]+)/
-    amount_regex = ~r/Valor Transacción: (?<amount>[\d|,]+)/
-    payee_regex = ~r/Lugar de Transacción: (?<payee_name>.+)\n/
-    import_id = :crypto.hash(:md5, notification) |> Base.encode16()
+    try do
+      date_regex = ~r/Fecha: (?<date>[\d|\/]+)/
+      amount_regex = ~r/Valor Transacción: (?<amount>[\d|,]+)/
+      payee_regex = ~r/Lugar de Transacción: (?<payee_name>.+)\n/
+      import_id = :crypto.hash(:md5, notification) |> Base.encode16()
 
-    %{"date" => date} = Regex.named_captures(date_regex, notification)
-    %{"amount" => amount} = Regex.named_captures(amount_regex, notification)
-    %{"payee_name" => payee_name} = Regex.named_captures(payee_regex, notification)
+      %{"date" => date} = Regex.named_captures(date_regex, notification)
+      %{"amount" => amount} = Regex.named_captures(amount_regex, notification)
+      %{"payee_name" => payee_name} = Regex.named_captures(payee_regex, notification)
 
-    {amount, _} = amount |> String.replace(",", "") |> Integer.parse()
+      {amount, _} = amount |> String.replace(",", "") |> Integer.parse()
 
-    %{
-      amount: -amount,
-      approved: true,
-      cleared: "cleared",
-      date: date |> String.replace("/", "-"),
-      import_id: import_id,
-      payee_name: payee_name
-    }
+      {:ok,
+       %{
+         amount: -amount,
+         approved: true,
+         cleared: "cleared",
+         date: date |> String.replace("/", "-"),
+         import_id: import_id,
+         payee_name: payee_name
+       }}
+    rescue
+      e in MatchError -> {:error, :unknown_provider}
+    end
   end
 end
