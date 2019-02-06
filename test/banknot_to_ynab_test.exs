@@ -67,7 +67,7 @@ defmodule BanknotToYnabTest do
                 amount: -103.21,
                 approved: true,
                 cleared: "cleared",
-                date: "04-02-2019",
+                date: "2019-02-04",
                 import_id: "ACFBBCE45FBD20BB26905DDE53393BD5",
                 payee_name: "SPORTS BASEMENT"
               }} = BanknotToYnab.parse(@davivienda)

@@ -64,7 +64,7 @@ defmodule BanknotToYnab do
     {amount, _} = Float.parse(amount)
 
     %{
-      date: date,
+      date: format_date(date, "%d/%m/%Y"),
       amount: amount,
       payee_name: payee_name
     }
@@ -81,5 +81,10 @@ defmodule BanknotToYnab do
       true ->
         {:unknown_provider, notification}
     end
+  end
+
+  defp format_date(date, strftime) do
+    {:ok, timex} = Timex.parse(date, strftime, :strftime)
+    Timex.format!(timex, "%Y-%m-%d", :strftime)
   end
 end
