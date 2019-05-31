@@ -53,18 +53,18 @@ defmodule BanknotToYnab do
   end
 
   def extract_data({:davivienda_pa, notification}) do
-    date_regex = ~r/el día (?<date>[\d|\/]+)/
-    amount_regex = ~r/valor de (?<amount>[\d|\.]+)/
-    payee_regex = ~r/valor de [\d|\.]+ en (?<payee_name>.+) el/
+    amount_regex = ~r/por \$ (?<amount>[\d|\.]+)\./
+    payee_regex = ~r/, en (?<payee_name>.+)., por/
 
-    %{"date" => date} = Regex.named_captures(date_regex, notification)
+    date = Timex.format!(Timex.now(), "%Y-%m-%d", :strftime)
+
     %{"amount" => amount} = Regex.named_captures(amount_regex, notification)
     %{"payee_name" => payee_name} = Regex.named_captures(payee_regex, notification)
 
     {amount, _} = Float.parse(amount)
 
     %{
-      date: format_date(date, "%d/%m/%Y"),
+      date: date,
       amount: amount,
       payee_name: payee_name
     }

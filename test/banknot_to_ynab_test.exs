@@ -45,19 +45,20 @@ defmodule BanknotToYnabTest do
 
   describe "Panama banks" do
     @davivienda """
-    Estimado Cliente
+    Estimado(a) Sr. (a):
+    John Doe
 
+    Se registró COMPRAS con tarjeta débito MASTERCARD terminación 9029, en SPORTS BASEMENT., por $ 103.21.
+    En caso de no reconocer esta transacción, agradecemos contactarnos a
+    nuestro Call Center al (507) 366-6565, en horarios de atención
+    de lunes a viernes de 7:30 am a 6:00 pm, y los sábados de 8:00 am a 1:00
+    pm.
+    Para reportes fuera de este horario desde Panamá, favor llamar al 216-9214
+    o 800-6565, desde Colombia al 01-800-0118110,
 
-    Se ha realizado un cargo a su tarjeta MasterCard Davivienda 9020, por
-    valor de 103.21 en SPORTS BASEMENT el día 04/02/2019
+    o (507) 216-9214 desde cualquier parte del mundo.
 
-    De no reconocer la transacción, favor llamar al 800 6565 o 216 9214 en
-    Panamá, 018000 118 110 en Colombia o (507) 216 9214 en el resto del
-    mundo.
-
-
-    Cordialmente
-
+    Cordialmente,
     Banco Davivienda Panamá S.A.
     """
 
@@ -67,8 +68,8 @@ defmodule BanknotToYnabTest do
                 amount: -103.21,
                 approved: true,
                 cleared: "cleared",
-                date: "2019-02-04",
-                import_id: "ACFBBCE45FBD20BB26905DDE53393BD5",
+                date: "2019-05-31",
+                import_id: "E061BAABE4A99A544342ADB999C74EA5",
                 payee_name: "SPORTS BASEMENT"
               }} = BanknotToYnab.parse(@davivienda)
     end
