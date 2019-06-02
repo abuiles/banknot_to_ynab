@@ -48,7 +48,9 @@ defmodule BanknotToYnabTest do
     Estimado(a) Sr. (a):
     John Doe
 
-    Se registró COMPRAS con tarjeta débito MASTERCARD terminación 9029, en SPORTS BASEMENT., por $ 103.21.
+    Se registró COMPRAS con tarjeta débito MASTERCARD terminación 8050, en AMZN
+    Mktp US zn com bill W A., por $ 109.90.
+
     En caso de no reconocer esta transacción, agradecemos contactarnos a
     nuestro Call Center al (507) 366-6565, en horarios de atención
     de lunes a viernes de 7:30 am a 6:00 pm, y los sábados de 8:00 am a 1:00
@@ -65,11 +67,11 @@ defmodule BanknotToYnabTest do
     test "it recognizes davivienda panama" do
       assert {:ok,
               %{
-                amount: -103.21,
+                amount: -109.9,
                 approved: true,
                 cleared: "cleared",
-                import_id: "E061BAABE4A99A544342ADB999C74EA5",
-                payee_name: "SPORTS BASEMENT"
+                import_id: "37AE6E193FDBAE224C25FC400BA12AEF",
+                payee_name: "AMZN Mktp US zn com bill W A"
               }} = BanknotToYnab.parse(@davivienda)
     end
   end
