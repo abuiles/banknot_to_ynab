@@ -48,7 +48,8 @@ defmodule BanknotToYnabTest do
     Estimado(a) Sr. (a):
     John Doe
 
-    Se registró COMPRAS con tarjeta débito MASTERCARD terminación 8050, en AMZN
+    Se registró COMPRAS con tarjeta débito MASTERCARD terminación 8050, en
+    AMZN
     Mktp US zn com bill W A., por $ 109.90.
 
     En caso de no reconocer esta transacción, agradecemos contactarnos a
@@ -70,7 +71,7 @@ defmodule BanknotToYnabTest do
                 amount: -109.9,
                 approved: true,
                 cleared: "cleared",
-                import_id: "37AE6E193FDBAE224C25FC400BA12AEF",
+                import_id: "A7BC57DF75C2280960A002FC43722E7D",
                 payee_name: "AMZN Mktp US zn com bill W A"
               }} = BanknotToYnab.parse(@davivienda)
     end
